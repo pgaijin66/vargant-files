@@ -1,4 +1,19 @@
-# My vagrant for day to day testin
+# My vagrant files
+
+# Table of contents
+
+- [Install vargant](#install-vargant)
+- [After installation](#after-installation)
+- [Vagrant commands](#vagrant-commands)
+  - [Start VM](#start-vm)
+  - [Listing running vms](#listing-running-vms)
+  - [Shutdown box](#shutdown-box)
+  - [SSH uto your machine](#ssh-uto-your-machine)
+  - [List vagrant boxes](#list-vagrant-boxes)
+  - [Destory running vm](#destory-running-vm)
+  - [Remove vagrant boxes](#remove-vagrant-boxes)
+  - [Exit from box](#exit-from-box)
+- [Gotcha](#gotcha)
 
 ## Install vargant
 
@@ -92,4 +107,27 @@ $ vagrant ssh centos8
 Welcome to your Vagrant-built virtual machine.
 Last login: Fri Sep 14 06:23:18 2012 from 10.0.2.2
 vagrant@centos:~ logout
+```
+
+## Gotcha
+
+If you get error like 
+
+```
+umount /mnt
+
+Stdout from the command:
+
+
+
+Stderr from the command:
+
+umount: /mnt: not mounted
+```
+
+Simply backport the vbguet to 0.21 which works
+
+``` shell
+vagrant plugin uninstall vagrant-vbguest
+vagrant plugin install vagrant-vbguest --plugin-version 0.21
 ```
